@@ -1,6 +1,6 @@
 # Sphere Customizer
 
-[[Live Demo](https://sphere-customizer.vercel.app)](https://sphere-customizer.vercel.app)
+[[Live Demo](sphere-customizer-66hj.vercel.app)](https://sphere-customizer.vercel.app)
 
 Sphere Customizer is a web-based tool that allows users to easily customize and visualize 3D spheres with various parameters. Built with Three.js and React, this tool provides an interactive UI for dynamically changing the size, color, and material properties of a sphere in real-time.
 
@@ -14,5 +14,5 @@ Sphere Customizer is a web-based tool that allows users to easily customize and 
 
 ## Demo
 
-You can check out the live demo [here](https://sphere-customizer.vercel.app).
+You can check out the live demo [here](sphere-customizer-66hj.vercel.app).
 
