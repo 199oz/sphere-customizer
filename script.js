@@ -20,17 +20,17 @@ function init() {
   document.body.appendChild(renderer.domElement);
   // function for re-rendering/animating the scene
 
-  let IcosahedronGeometry = new THREE.IcosahedronGeometry(3,2);
+  let icosahedronGeometry  = new THREE.IcosahedronGeometry(3,2);
   const icosahedronMaterial = new THREE.MeshStandardMaterial({color: 'yellow',flatShading:true})
   const icosahedronGlowMaterial = new THREE.MeshStandardMaterial({color: 'black',wireframe:true});
   
   let icosahedronMesh = new THREE.Mesh(
-    IcosahedronGeometry,
+    icosahedronGeometry,
     icosahedronMaterial
   )
 
   const glowMesh = new THREE.Mesh(
-    IcosahedronGeometry,
+    icosahedronGeometry,
     icosahedronGlowMaterial
   )
   glowMesh.scale.addScalar(0.0003)
