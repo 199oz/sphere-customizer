@@ -2,7 +2,8 @@
   "name": "sphere-customizer",
   "version": "1.0.0",
   "scripts": {
-    "build": "parcel build ./index.html"
+    "build": "parcel build ./index.html",
+    "dev": "parcel ./index.html"
   },
   "keywords": [],
   "author": "",

@@ -606,7 +606,6 @@ function init() {
     // function for re-rendering/animating the scene
     let icosahedronGeometry = new _three.IcosahedronGeometry(3, 2);
     const icosahedronMaterial = new _three.MeshStandardMaterial({
-        color: "yellow",
         flatShading: true
     });
     const icosahedronGlowMaterial = new _three.MeshStandardMaterial({
@@ -615,10 +614,10 @@ function init() {
     });
     let icosahedronMesh = new _three.Mesh(icosahedronGeometry, icosahedronMaterial);
     const glowMesh = new _three.Mesh(icosahedronGeometry, icosahedronGlowMaterial);
-    glowMesh.scale.addScalar(0.0003);
+    glowMesh.scale.addScalar(0.03);
     icosahedronMesh.add(glowMesh);
     scene.add(icosahedronMesh);
-    const Light = new _three.HemisphereLight(0xffffff, 0x444444, 2);
+    const Light = new _three.HemisphereLight(0xffffff, 0x444444, 1);
     Light.position.set(0, 200, 0);
     scene.add(Light);
     const gui = new _datGui.GUI();
@@ -626,10 +625,14 @@ function init() {
         radius: 3,
         detail: 2,
         skyColor: Light.color.getHex(),
-        groundColor: Light.groundColor.getHex()
+        groundColor: Light.groundColor.getHex(),
+        intensity: Light.intensity = 1
     };
     gui.add(options, "radius", 1, 10).name("Radius").onChange(updateGeometry);
     gui.add(options, "detail", 0, 10).name("Details").step(1).onChange(updateGeometry);
+    gui.add(options, "intensity", 1, 5).onChange((value)=>{
+        Light.intensity = value;
+    });
     gui.addColor(options, "skyColor").onChange((value)=>{
         Light.color.setHex(value);
     });
@@ -638,11 +641,12 @@ function init() {
     });
     function updateGeometry() {
         scene.remove(icosahedronMesh);
+        scene.remove(glowMesh);
         // Create a new geometry with updated parameters
         icosahedronGeometry = new _three.IcosahedronGeometry(options.radius, options.detail);
         // Create a new mesh and add it to the scene
         icosahedronMesh = new _three.Mesh(icosahedronGeometry, icosahedronMaterial);
-        glowMesh.scale.addScalar(0.03);
+        glowMesh.scale.addScalar();
         // Re-add the glowMesh to the icosahedronMesh
         icosahedronMesh.add(glowMesh);
         scene.add(icosahedronMesh);
